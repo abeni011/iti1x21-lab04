@@ -9,7 +9,9 @@ public class Post implements Likeable, Comparable<Post> {
 
     public Post(String userName) {
 
-      // YOUR CODE HERE
+      this.userName = userName;
+      this.timeStamp = Calendar.getInstance().getTime();
+      this.likes = 0;
 
     }
 
@@ -24,6 +26,14 @@ public class Post implements Likeable, Comparable<Post> {
     // Implement the methods required by the interface Likeable.
     // This file will not compile unless they are present with the correct name and signature.
 
+	public void like(){
+	    likes = likes + 1 ;
+	}
+	public int getLikes(){
+		return likes;
+	}	
+	
+
     public String toString() {
     	String str = new String();
     	str = getClass().getName() + ": " + timeStamp + ", " + userName + ", likes = " + likes;
@@ -32,13 +42,18 @@ public class Post implements Likeable, Comparable<Post> {
 
   	public int compareTo(Post other) {
 
-  		// YOUR CODE HERE
+  	    return timeStamp.compareTo(other.timeStamp)
 
   	}
 
   	public boolean isPopular() {
 
-  		// YOUR CODE HERE
+   		if (likes>100){
+			return true;
+		}else{
+			return false;
+		}
+		
 
   	}
 
